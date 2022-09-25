@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group 'org.springframework'
+version '5.1.11.BUILD-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    /*lombok*/
+    compileOnly 'org.projectlombok:lombok:1.18.4'
+    annotationProcessor 'org.projectlombok:lombok:1.18.4'
+    testCompileOnly 'org.projectlombok:lombok:1.18.4'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.4'
+    /*日志*/
+    compile('org.springframework.boot:spring-boot-starter-log4j2:2.0.3.RELEASE')
+    /*beanutils*/
+    compile('commons-beanutils:commons-beanutils:1.9.4')
+    /*验证*/
+    compile('org.hibernate.validator:hibernate-validator:6.0.14.Final')
+
+    compile("org.apache.tomcat.embed:tomcat-embed-core:8.5.33")
+    compile(project(":spring-webmvc"))
+    compile(project(":spring-aop"))
+    compile(project(":spring-aspects"))
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

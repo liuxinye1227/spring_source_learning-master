@@ -1,0 +1,2 @@
+# Test configuration file containing prosonA non-existent default TestExecutionListener.
+org.springframework.test.context.TestExecutionListener = org.example.FooListener
