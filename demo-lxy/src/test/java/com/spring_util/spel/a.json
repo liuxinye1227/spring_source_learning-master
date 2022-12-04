@@ -1,0 +1,16 @@
+{
+  "code": 200,
+  "message": "ok",
+  "data": {
+    "videoStatisticsData": {
+      "pageCount": 0,
+      "record": [],
+      "pageSize": 20,
+      "totalCount": 0,
+      "pageNum": 1
+    },
+    "violationData": {
+      "pageCount": 6
+    }
+  }
+}
