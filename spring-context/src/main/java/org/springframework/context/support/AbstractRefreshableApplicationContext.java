@@ -127,10 +127,10 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 			closeBeanFactory();
 		}
 		try {
-			DefaultListableBeanFactory beanFactory = createBeanFactory();
+			DefaultListableBeanFactory beanFactory = createBeanFactory();  //每次都创建新的工厂
 			beanFactory.setSerializationId(getId());
-			customizeBeanFactory(beanFactory);
-			loadBeanDefinitions(beanFactory);
+			customizeBeanFactory(beanFactory);//定制化Bean工厂
+			loadBeanDefinitions(beanFactory); //加载bean定义信息
 			synchronized (this.beanFactoryMonitor) {
 				this.beanFactory = beanFactory;
 			}
@@ -223,7 +223,7 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 	 */
 	protected void customizeBeanFactory(DefaultListableBeanFactory beanFactory) {
 		if (this.allowBeanDefinitionOverriding != null) {
-			beanFactory.setAllowBeanDefinitionOverriding(this.allowBeanDefinitionOverriding);
+			beanFactory.setAllowBeanDefinitionOverriding(this.allowBeanDefinitionOverriding); //是否运行被重写
 		}
 		if (this.allowCircularReferences != null) {
 			beanFactory.setAllowCircularReferences(this.allowCircularReferences);

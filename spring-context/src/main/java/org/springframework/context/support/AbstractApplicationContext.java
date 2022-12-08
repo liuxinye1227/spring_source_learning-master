@@ -518,12 +518,14 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	public void refresh() throws BeansException, IllegalStateException {
 		synchronized (this.startupShutdownMonitor) {
 			//1、 Prepare this context for refreshing.
-			//准备刷新容器，刷新前的处理
-			//内容：记录容器启动时间，将容器标记为活动状态，和容器打开状态
-			//      读取一些配置文件(比如servlet..配置)，创建一个用来保存早期事件的集合
+			// 刷新前的准备
+				//1、记录当前SPring容器的启动时间
+				//2、设置容器开启标志，将容器标记为活动状态
+				//3、获取环境对象并设置属性
+				//4、读取一些配置文件(比如servlet..配置)设置监听器，创建一个存储需要发布事件的集合
 			prepareRefresh();
-
 			//2、 Tell the subclass to refresh the internal bean factory.
+			//
 			//得到一个新的beanFactory
 			//告诉子类刷新内部bean工厂。 用来保存 bean 的容器 相当于IOC容器
 			//内容：创建了 DefaultListableBeanFactory 是 ConfigurableListableBeanFactory 接口的实现
@@ -645,7 +647,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		getEnvironment().validateRequiredProperties();
 
 		// Store pre-refresh ApplicationListeners...
-		if (this.earlyApplicationListeners == null) {
+		if (this.earlyApplicationListeners == null) {  //为扩展使用
 			this.earlyApplicationListeners = new LinkedHashSet<>(this.applicationListeners);
 		}
 		else {
